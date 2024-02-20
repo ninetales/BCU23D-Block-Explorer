@@ -1,0 +1,25 @@
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    button,
+    input[type="submit"] {
+        color: #fff;
+        background-color: $accentColor;
+    }
+
+    label {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+}
+
+input[type="text"] {
+    height: $inputHeight;
+    padding: 0 15px;
+    border: 1px solid #eee;
+    display: block;
+    border-radius: .3rem;
+}

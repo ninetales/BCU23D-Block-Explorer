@@ -1,0 +1,27 @@
+// ==================================================================================
+// _typography.scss
+// ==================================================================================
+
+/* Px to Rem */
+@function pxToRem($size) {
+    @return calc($size / 16) * 1rem;
+}
+
+/* Define a mixin for incremental sizing with decrease for higher levels */
+@mixin heading-sizes($base-size, $decrement) {
+    $current-size: $base-size;
+
+    @for $i from 1 through 6 {
+        h#{$i} {
+            font-size: pxToRem($current-size);
+        }
+
+        $current-size: $current-size - $decrement;
+    }
+}
+
+$fontPrimary: "Barlow", sans-serif;
+
+body {
+    @include heading-sizes(30, 4);
+}

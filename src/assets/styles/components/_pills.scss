@@ -1,0 +1,13 @@
+.pills {
+    display: inline-flex;
+}
+
+.pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 20px;
+    border-radius: 50px;
+    border: 1px solid #eee;
+    min-height: 40px;
+    gap: 10px;
+}

@@ -1,0 +1,31 @@
+.accordions {
+    background-color: #fff;
+
+    .accordion {
+        border: 1px solid #eee;
+
+        &+li {
+            border-top: 0;
+        }
+
+        &__header {
+            display: flex;
+            align-items: center;
+            min-height: 50px;
+            cursor: pointer;
+            padding: 20px;
+        }
+
+        &__body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+        }
+
+        &__content {
+            border-top: 1px solid #eee;
+            padding: 20px;
+        }
+    }
+
+}

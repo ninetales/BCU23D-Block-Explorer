@@ -1,0 +1,23 @@
+@import './vendor/reset.scss';
+@import './vendor/normalize.scss';
+
+@import './abstract/variables.scss';
+@import './abstract/colors.scss';
+@import './abstract/typography.scss';
+
+@import './layout/grid.scss';
+@import './layout/base.scss';
+
+@import './components/header.scss';
+@import './components/buttons.scss';
+@import './components/cards.scss';
+@import './components/forms.scss';
+@import './components/pills.scss';
+@import './components/sidebar.scss';
+@import './components/shadow.scss';
+@import './components/accordion.scss';
+
+html {
+    color: $primaryColor;
+    height: 100%;
+}

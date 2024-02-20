@@ -1,0 +1,23 @@
+.shadow {
+    cursor: pointer;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    background-color: #4b0a2e78;
+    opacity: 0;
+    transition: all .3s ease-in-out;
+    visibility: hidden;
+
+    &:hover {
+        background-color: shade(#4b0a2e78, 10%);
+    }
+
+    &[data-shadow-active="true"] {
+        visibility: visible;
+        opacity: 1;
+    }
+}

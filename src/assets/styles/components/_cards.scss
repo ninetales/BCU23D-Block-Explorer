@@ -1,0 +1,81 @@
+.card {
+    border-radius: .5rem;
+    padding: 40px;
+    border: 1px solid #f5f5f5;
+}
+
+.balance {
+    // background-image: linear-gradient(to left top, #f6b9ff, #f2cdff, #f2dfff, #f6f0ff, #ffffff);
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    &__data {
+        padding: 20px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        border-radius: .3rem;
+        // background-color: #fffbff;
+        background-color: #ffffff;
+        opacity: 0.8;
+        background-size: 10px 10px;
+        background-image: repeating-linear-gradient(45deg, #f0c7fc 0, #f0c7fc 1px, #ffffff 0, #ffffff 50%);
+        border: 1px solid #eee;
+    }
+
+    &__currency {
+        font-size: pxToRem(15);
+        background-color: #fff;
+    }
+
+    &__amount {
+        font-size: pxToRem(30);
+        font-weight: bold;
+        background-color: #fff;
+    }
+}
+
+.transfer {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .transfer-form {
+        &__fields {
+            display: grid;
+            gap: 20px;
+            align-items: center;
+            grid-template-columns: 1fr;
+
+            i {
+                margin-top: 21px;
+                font-size: pxToRem(25);
+            }
+        }
+    }
+}
+
+@media screen and (min-width: $tabletSize) {
+
+    .transfer {
+
+        .transfer-form {
+            &__fields {
+                grid-template-columns: 1fr auto 1fr;
+            }
+        }
+
+    }
+}
+
+.history {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #fff;
+}

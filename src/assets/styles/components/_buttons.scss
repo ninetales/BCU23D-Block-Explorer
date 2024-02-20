@@ -1,0 +1,13 @@
+button,
+input[type="submit"] {
+    cursor: pointer;
+    border: none;
+    border-radius: .3rem;
+    height: $inputHeight;
+    width: 100%;
+    padding: 0;
+
+    i {
+        font-size: pxToRem(20);
+    }
+}
