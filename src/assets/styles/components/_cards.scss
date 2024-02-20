@@ -1,6 +1,6 @@
 .card {
     border-radius: .5rem;
-    padding: 40px;
+    padding: 20px;
     border: 1px solid #f5f5f5;
 }
 
@@ -60,7 +60,20 @@
     }
 }
 
+
+.history {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #fff;
+}
+
+
 @media screen and (min-width: $tabletSize) {
+
+    .card {
+        padding: 40px;
+    }
 
     .transfer {
 
@@ -71,11 +84,4 @@
         }
 
     }
-}
-
-.history {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    background-color: #fff;
 }
