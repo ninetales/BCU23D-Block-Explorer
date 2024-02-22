@@ -17,24 +17,6 @@
 
     &__header {
         height: 60px;
-
-        button {
-            border-radius: 0;
-            background-color: transparent;
-            height: 100%;
-            max-width: 60px;
-
-            i {
-                font-size: pxToRem(30);
-                color: $primaryColor;
-            }
-
-            &:hover {
-                i {
-                    color: tint($primaryColor, 30%);
-                }
-            }
-        }
     }
 
     li {

@@ -6,8 +6,81 @@ input[type="submit"] {
     height: $inputHeight;
     width: 100%;
     padding: 0;
+    position: relative;
+    overflow: hidden;
 
     i {
         font-size: pxToRem(20);
     }
+}
+
+.modal-action-btn {
+
+    border-radius: 0;
+    background-color: transparent;
+    height: 100%;
+    max-width: 60px;
+
+    i {
+        font-size: pxToRem(30);
+        color: $primaryColor;
+    }
+
+    &:hover {
+        i {
+            color: tint($primaryColor, 30%);
+        }
+    }
+
+}
+
+
+@keyframes loading {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loading {
+    pointer-events: none;
+    /* Disable button clicks while loading */
+    cursor: progress;
+    /* Change cursor to progress */
+    opacity: 0.6;
+    /* Reduce opacity to indicate loading state */
+}
+
+.loading::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    background-color: $accentColor;
+}
+
+.loading::after {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #fff;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: loading 0.6s linear infinite;
+    margin-left: 8px;
+    z-index: 2;
+    position: absolute;
+    margin-right: auto;
+    margin-left: auto;
+    top: 50%;
+    left: 50%;
+    margin-top: -10px;
+    margin-left: -10px;
 }

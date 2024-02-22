@@ -1,4 +1,4 @@
-const accordion = () => {
+const accordionList = () => {
 
     const accordions = document.querySelectorAll('.accordions');
     accordions.forEach(list => {
@@ -17,4 +17,4 @@ const accordion = () => {
 
 }
 
-export default accordion;
+export default accordionList;

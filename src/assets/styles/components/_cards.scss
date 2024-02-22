@@ -33,9 +33,10 @@
     }
 
     &__amount {
-        font-size: pxToRem(30);
+        font-size: pxToRem(18);
         font-weight: bold;
         background-color: #fff;
+        overflow-wrap: anywhere;
     }
 }
 
@@ -73,6 +74,12 @@
 
     .card {
         padding: 40px;
+    }
+
+    .balance {
+        &__amount {
+            font-size: pxToRem(30);
+        }
     }
 
     .transfer {

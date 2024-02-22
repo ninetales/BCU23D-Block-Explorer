@@ -1,3 +1,4 @@
 .vscode
 .DS_STORE
-*.css.map
+*.css.map,
+node_modules

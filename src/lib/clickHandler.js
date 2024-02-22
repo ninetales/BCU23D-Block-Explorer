@@ -1,10 +1,8 @@
-import shadow from "../dom/shadow.js";
+import { shadow } from "../dom/shadow.js";
 
 const clickHandler = () => {
-    console.log('clickhandler');
 
     disableAllElements();
-    shadow();
 
     document.addEventListener('click', (e) => {
 
@@ -40,6 +38,11 @@ const clickHandler = () => {
         const pointerElements = document.querySelectorAll('[data-pointer]');
         pointerElements.forEach(element => {
             element.setAttribute('data-pointer-active', 'false');
+        });
+
+        const modals = document.querySelectorAll('[data-modal]');
+        modals.forEach(modal => {
+            modal.remove();
         });
 
         shadow('disable');

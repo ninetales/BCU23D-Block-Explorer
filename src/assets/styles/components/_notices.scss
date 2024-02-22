@@ -1,0 +1,55 @@
+.transaction-notice {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: $textColor;
+
+    &__header {
+        display: flex;
+        flex-direction: column;
+        min-height: 100px;
+        justify-items: center;
+        align-items: center;
+        justify-content: center;
+        background-color: #08ff0012;
+        border-radius: .5rem;
+        gap: 10px;
+        padding: 20px;
+    }
+
+    &__body {
+        ul {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #eee;
+            padding: 20px;
+            border-radius: .5rem;
+
+            li {
+                padding: 15px 0;
+                overflow-wrap: break-word;
+
+                &+li {
+                    border-top: 1px solid #eee;
+                }
+
+                &:first-child {
+                    padding-top: 0;
+                }
+
+                &:last-child {
+                    padding-bottom: 0;
+                }
+            }
+        }
+    }
+
+    &__icon {
+        font-size: pxToRem(50);
+    }
+
+    &__status {
+        font-size: pxToRem(25);
+        text-align: center;
+    }
+}

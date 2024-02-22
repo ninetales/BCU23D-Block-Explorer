@@ -1,4 +1,4 @@
-const shadow = (status) => {
+export const initShadow = () => {
 
     if (!document.querySelector('.shadow')) {
         const shadow = document.createElement('div');
@@ -6,6 +6,9 @@ const shadow = (status) => {
         shadow.setAttribute('data-shadow-active', 'false');
         document.body.appendChild(shadow);
     }
+}
+
+export const shadow = (status) => {
 
     const shadowElement = document.querySelector('.shadow');
 
@@ -19,5 +22,3 @@ const shadow = (status) => {
     }
 
 }
-
-export default shadow;

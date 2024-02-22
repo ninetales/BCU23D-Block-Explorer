@@ -15,6 +15,10 @@
         href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/4.5.0/web3.min.js"
+        integrity="sha512-FhAl50BpK3gf9K//lbAWek9EEQEtGQyyXZNc1fuwcC2tVf2cskiJBcumXY0zJksYtms6S5cqubp1MNfUYTkO2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <script src="/src/lib/App.js" type="module" defer></script>
 
 </head>
@@ -24,7 +28,7 @@
     <aside class="sidebar" data-target="sidebar-nav">
         <nav>
             <div class="sidebar__header">
-                <button data-close-all="">
+                <button data-close-all="" class="modal-action-btn">
                     <i class="iconoir-xmark-circle"></i>
                 </button>
             </div>
@@ -83,12 +87,12 @@
 
                 <div class="balance__data">
                     <span class="balance__currency">ETH</span>
-                    <span class="balance__amount">2000</span>
+                    <span class="balance__amount" id="balance-amount">...</span>
                 </div>
 
-                <form action="" class="balance-form">
-                    <input type="text" placeholder="Account">
-                    <input type="submit" value="Check Balance">
+                <form action="" class="balance-form" id="balance-form">
+                    <input type="text" name="account" placeholder="Account">
+                    <button id="balance-submit-btn">Check balance</button>
                 </form>
 
             </div><!-- .balance -->
@@ -101,32 +105,7 @@
                     </div>
                 </div><!-- .pills -->
 
-                <ul class="accordions">
-                    <li class="accordion">
-                        <div class="accordion__header">Header demo</div><!-- .accordion__header -->
-                        <div class="accordion__body">
-                            <div class="accordion__content">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, praesentium
-                                    accusantium
-                                    maiores, cumque totam culpa ipsum molestiae necessitatibus corrupti maxime soluta
-                                    est
-                                    numquam nulla deserunt quaerat, impedit aperiam ratione id.</p>
-                            </div><!-- .accordion__content -->
-                        </div><!-- .accordion__body -->
-                    </li>
-                    <li class="accordion">
-                        <div class="accordion__header">Header demo</div><!-- .accordion__header -->
-                        <div class="accordion__body">
-                            <div class="accordion__content">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, praesentium
-                                    accusantium
-                                    maiores, cumque totam culpa ipsum molestiae necessitatibus corrupti maxime soluta
-                                    est
-                                    numquam nulla deserunt quaerat, impedit aperiam ratione id.</p>
-                            </div><!-- .accordion__content -->
-                        </div><!-- .accordion__body -->
-                    </li>
-                </ul>
+                <ul class="accordions" id="transaction-history"></ul>
 
             </div>
 
