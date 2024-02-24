@@ -1,3 +1,6 @@
+# About
+School assignment where we had to create a blockchain application that can view account balance and transfer funds to another account. For this project I used Web3.js and Ganache.
+
 # Desktop screenshots of the application
 !['Frontpage'](screenshots/frontpage.jpg)
 !['Navigation'](screenshots/navigation.jpg)
