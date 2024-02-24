@@ -54,8 +54,7 @@
             grid-template-columns: 1fr;
 
             i {
-                margin-top: 21px;
-                font-size: pxToRem(25);
+                display: none;
             }
         }
     }
@@ -87,6 +86,12 @@
         .transfer-form {
             &__fields {
                 grid-template-columns: 1fr auto 1fr;
+
+                i {
+                    display: block;
+                    margin-top: 21px;
+                    font-size: pxToRem(25);
+                }
             }
         }
 

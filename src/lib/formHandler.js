@@ -35,7 +35,7 @@ export async function validateTransaction(form) {
                     errorCounter++;
                     errorHandler(form, key, 'This field cannot be empty', 'error');
                 }
-                else if(formData.get('fromAccount')){
+                else if(formData.get('fromAccount') && await addressValidator(formData.get('fromAccount'))){
                     if(await balanceValidator(formData.get('fromAccount'), value)){
                         errorCounter++;
                         errorHandler(form, key, 'Not enough funds to transfer', 'error');
