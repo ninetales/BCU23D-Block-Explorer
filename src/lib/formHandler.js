@@ -39,6 +39,8 @@ export async function validateTransaction(form) {
                     if(await balanceValidator(formData.get('fromAccount'), value)){
                         errorCounter++;
                         errorHandler(form, key, 'Not enough funds to transfer', 'error');
+                    } else {
+                        clearErrorHandler(key);
                     }
                 }
                 else {
