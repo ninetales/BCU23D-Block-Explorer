@@ -1,1 +1,1 @@
-!['Frontpage']{screenshots/frontpage.jpg}
+!['Frontpage'](screenshots/frontpage.jpg)
