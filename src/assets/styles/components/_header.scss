@@ -5,6 +5,13 @@ header {
     margin-bottom: 20px;
 }
 
+.logotype {
+    font-family: $logoFont;
+    text-decoration: none;
+    font-size: pxToRem(20);
+    color: $textColor;
+}
+
 .header__inner-con {
     height: 100%;
     display: flex;

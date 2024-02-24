@@ -21,6 +21,7 @@
 }
 
 $fontPrimary: "Barlow", sans-serif;
+$logoFont: "Kaushan Script", cursive;
 
 body {
     @include heading-sizes(30, 4);

@@ -1,0 +1,61 @@
+.hero {
+    max-height: 500px;
+    overflow: hidden;
+    border-radius: .3rem;
+    position: relative;
+
+    &__img {
+        position: relative;
+
+        img {
+            width: 100%;
+            object-fit: cover;
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1;
+            background-color: $heroBannerOverlay;
+        }
+    }
+
+    &__container {
+        position: absolute;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 2;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__content {
+        text-align: center;
+        color: #fff;
+        padding: 0 20px;
+
+        h1 {
+            font-weight: bold;
+        }
+    }
+}
+
+@media screen and (min-width: $tabletSize) {
+    .hero {
+        &__content {
+            h1 {
+                font-weight: bold;
+                font-size: pxToRem(40);
+            }
+        }
+    }
+}
