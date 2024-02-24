@@ -2,23 +2,27 @@ import { settings } from "../utilities/state.js";
 import { modal } from "../dom/modal.js";
 import { transactionNotice } from "../dom/notice.js";
 import { validateTransaction } from "./formHandler.js";
+import { startLoadingAnimation, stopLoadingAnimation } from "../dom/shared.js";
 
 const initTransferHandler = () => {
 
-    const rpc = new Web3(settings.GANACHE_ADDRESS);
-
     const form = document.querySelector('#transfer-form');
-    form.addEventListener('submit', (e) => {
+    const submitBtn = document.querySelector('#transfer-submit-btn');
+    form.addEventListener('submit', async (e) => {
+        startLoadingAnimation(submitBtn);
+
         e.preventDefault();
-        if (validateTransaction(form)) {
-            // console.log('the form is successfull!');
+
+        if (await validateTransaction(form)) {
             sendTransaction();
-        } else {
-            // console.log('failed validation');
         }
+
+        stopLoadingAnimation(submitBtn)
     });
 
     async function sendTransaction() {
+        const rpc = new Web3(settings.GANACHE_ADDRESS);
+
         const formData = new FormData(form);
 
         const fromAccount = formData.get('fromAccount');
@@ -32,7 +36,7 @@ const initTransferHandler = () => {
                 value: rpc.utils.toWei(amount, 'ether'),
             });
 
-            // Check if transaction were successful
+            // Check if transaction was successful
             const receipt = await rpc.eth.getTransactionReceipt(trx.transactionHash);
             if (Number(receipt.status)) {
                 const transaction = await rpc.eth.getTransaction(trx.transactionHash);

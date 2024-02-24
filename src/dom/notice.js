@@ -40,7 +40,7 @@ export const transactionNotice = (data) => {
     list.appendChild(blockNumber);
 
     const gas = document.createElement('li');
-    gas.textContent = `Gas price: ${data.gas}`;
+    gas.textContent = `Gas: ${data.gas}`;
     list.appendChild(gas);
 
     return notice;
