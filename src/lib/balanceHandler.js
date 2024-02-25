@@ -1,5 +1,6 @@
 import { settings } from "../utilities/state.js";
 import { startLoadingAnimation, stopLoadingAnimation, transactionAccordion } from "../dom/shared.js";
+import { validateBalanceRequest } from './formHandler.js';
 
 const initBalanceHandler = () => {
 
@@ -21,7 +22,8 @@ const initBalanceHandler = () => {
         const formData = new FormData(form);
         const account = formData.get('account');
 
-        if (account) {
+        if (await validateBalanceRequest(form)) {
+            console.log('valid');
 
             const balance = await rpc.eth.getBalance(account);
             if (balance) {
@@ -29,18 +31,23 @@ const initBalanceHandler = () => {
                 balanceContainer.innerText = rpc.utils.fromWei(balance, 'ether');
             }
 
-
             // Get latest block
             const block = await rpc.eth.getBlock('latest');
-            if (block === null) return;
+            if (block === null){
+                stopLoadingAnimation(submitBtn);
+                return;
+            }
 
             const transactions = block.transactions;
             if (transactions) {
+                console.log('transactions');
                 displayAccountHistory(transactions);
+                stopLoadingAnimation(submitBtn);
             }
 
         } else {
             balanceContainer.innerText = '...';
+            clearTransactionHistory();
             stopLoadingAnimation(submitBtn);
         }
 
@@ -48,9 +55,9 @@ const initBalanceHandler = () => {
 
     async function displayAccountHistory(transactions) {
 
-        while (transactionContainer.firstChild) {
-            transactionContainer.removeChild(transactionContainer.firstChild);
-        }
+
+        clearTransactionHistory();
+
         transactionContainer.appendChild(transactionAccordion());
         transactionContainer.appendChild(transactionAccordion());
         transactionContainer.appendChild(transactionAccordion());
@@ -63,6 +70,12 @@ const initBalanceHandler = () => {
             let trx = await rpc.eth.getTransaction(hash);
             console.log(trx);
             // createTransactionList(trx);
+        }
+    }
+
+    function clearTransactionHistory(){
+        while (transactionContainer.firstChild) {
+            transactionContainer.removeChild(transactionContainer.firstChild);
         }
     }
 

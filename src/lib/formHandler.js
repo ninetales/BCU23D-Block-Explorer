@@ -1,7 +1,16 @@
-import { settings } from "../utilities/state.js";
+// import { settings } from "../utilities/state.js";
+
+// Remove comment when testing with VITEST
+// Set comment when NOT testing, otherwise breaks website!
+// import Web3 from 'web3';
+// =======================================================
+
+const settings = {
+    GANACHE_ADDRESS: 'HTTP://127.0.0.1:7545',
+}
 
 export async function validateTransaction(form) {
-    
+    const rpc = new Web3(settings.GANACHE_ADDRESS);
     const formData = new FormData(form);
 
     let errorCounter = 0;
@@ -13,7 +22,7 @@ export async function validateTransaction(form) {
                     errorCounter++;
                     errorHandler(form, key, 'This field cannot be empty', 'error');
                 }
-                else if (await addressValidator(value) === false) {
+                else if (addressValidator(value) === false) {
                     errorCounter++;
                     errorHandler(form, key, 'This is not a valid account number', 'error');
                 }
@@ -27,6 +36,7 @@ export async function validateTransaction(form) {
                 break;
             case 'amount':
                 value = Number(value);
+                
                 if (isNaN(value)) {
                     errorCounter++;
                     errorHandler(form, key, 'Only numerical values', 'error');
@@ -35,8 +45,8 @@ export async function validateTransaction(form) {
                     errorCounter++;
                     errorHandler(form, key, 'This field cannot be empty', 'error');
                 }
-                else if(formData.get('fromAccount') && await addressValidator(formData.get('fromAccount'))){
-                    if(await balanceValidator(formData.get('fromAccount'), value)){
+                else if(formData.get('fromAccount') && addressValidator(formData.get('fromAccount'))){
+                    if(await transferBalanceValidator(formData.get('fromAccount'), value)){
                         errorCounter++;
                         errorHandler(form, key, 'Not enough funds to transfer', 'error');
                     } else {
@@ -58,7 +68,36 @@ export async function validateTransaction(form) {
 
 }
 
-export async function addressValidator(account) {
+export async function validateBalanceRequest(form){
+    const formData = new FormData(form);
+    const account = formData.get('account');
+    const rpc = new Web3(settings.GANACHE_ADDRESS);
+
+    if(account){
+        if(addressValidator(account)){
+            const balance = await rpc.eth.getBalance(account);
+            if(!balance){
+                errorHandler(form, 'account', 'No balance to show for this account', 'error');
+                return false;
+            } else {
+                clearErrorHandler('account');
+                return true;
+            }
+        } else {
+            errorHandler(form, 'account', 'This is not a valid account number', 'error');
+            return false;
+        }
+    } 
+    else if(!account) {
+        errorHandler(form, 'account', 'Input field cannot be empty', 'error');
+        return false;
+    } else {
+        clearErrorHandler('account');
+    }
+
+}
+
+export function addressValidator(account) {
     const rpc = new Web3(settings.GANACHE_ADDRESS);
     if (rpc.utils.isAddress(account)) {
         return true;
@@ -67,7 +106,7 @@ export async function addressValidator(account) {
     }
 }
 
-export async function balanceValidator(accountFrom, amountToSend){
+export async function transferBalanceValidator(accountFrom, amountToSend){
     const rpc = new Web3(settings.GANACHE_ADDRESS);
     const balance = await rpc.eth.getBalance(accountFrom);
     const gasPrice = await rpc.eth.getGasPrice();
